@@ -12,8 +12,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $allowedCategories = ['Daerah', 'Nasional', 'Internasional', 'Opini'];
-        $welcomeBlog = Article::with('category')
+            $allowedCategories = ['daerah', 'nasional', 'internasional', 'opini'];
+            $welcomeBlog = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->where('is_featured', 1)
             ->latest('tanggal_posting')
@@ -77,7 +77,7 @@ class HomeController extends Controller
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->latest('tanggal_posting')
             ->take(8)->get();
-        
+
         return view('news.index', compact(
             'allowedCategories',
             'welcomeBlog','marquee','featured','mostPopular',

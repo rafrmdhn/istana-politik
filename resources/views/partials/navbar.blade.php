@@ -11,8 +11,8 @@
                                     <a class="nav-link" href="{{ route('home') }}">Home</span></a>
                                 </li>
                                 @foreach ($allowedCategories as $category)
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">{{ $category }}</a>
+                                    <li class="nav-item {{ Request::is('category/' . Str::slug($category)) ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('categories.show', $category) }}">{{ $category }}</a>
                                     </li>
                                 @endforeach
                                 <li class="nav-item">

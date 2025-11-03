@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,9 +18,23 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+        $categories = [
+            ['name' => 'Daerah', 'slug' => 'daerah', 'status' => 1],
+            ['name' => 'Nasional', 'slug' => 'nasional', 'status' => 1],
+            ['name' => 'Opini', 'slug' => 'opini', 'status' => 1],
+        ];
+
+        // foreach ($categories as $category) {
+        //     Category::create($category);
+        // }
+
+        $this->call([
+            ArticleSeeder::class,
         ]);
     }
 }

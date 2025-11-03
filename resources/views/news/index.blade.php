@@ -1,75 +1,120 @@
 @extends('layouts.main')
 
 @section('container')
+    <!-- Welcome Blog Slide Area Start -->
+    <section class="welcome-blog-post-slide owl-carousel">
+        @foreach($welcomeBlog as $post)
+            <div class="single-blog-post-slide bg-img background-overlay-5"
+                style="background-image:url('{{ $post->gambar }}');">
+                <div class="single-blog-post-content">
+                <div class="tags">
+                    @if($post->category)
+                    {{-- <a href="{{ route('categories.show', $post->category->slug ?? Str::slug($post->category->name)) }}"> --}}
+                    <a href="">
+                        {{ $post->category->name }}
+                    </a>
+                    @endif
+                </div>
+                <h3>
+                    {{-- <a href="{{ route('articles.show', $post->slug) }}" class="font-pt"> --}}
+                    <a href="">
+                    {{ Str::limit($post->judul, 70) }}
+                    </a>
+                </h3>
+                <div class="date">
+                    <a href="#">{{ \Carbon\Carbon::parse($post->tanggal_posting)->translatedFormat('d M Y') }}</a>
+                </div>
+                </div>
+            </div>
+        @endforeach
+    </section>
+    <!-- Welcome Blog Slide Area End -->
+
+    <!-- Latest News Marquee Area Start -->
+    <div class="latest-news-marquee-area">
+        <div class="simple-marquee-container">
+            <div class="marquee">
+                <ul class="marquee-content-items">
+                    @foreach($marquee as $item)
+                    <li>
+                        {{-- <a href="{{ route('articles.show',$item->slug) }}"> --}}
+                        <a href="">
+                        <span class="latest-news-time">{{ $item->created_at->format('H:i') }}</span>
+                        {{ Str::limit($item->judul, 90) }}
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Latest News Marquee Area End -->
+
     <!-- Main Content Area Start -->
     <section class="main-content-wrapper section_padding_100">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-9">
                     <!-- Gazette Welcome Post -->
-                    <div class="gazette-welcome-post">
-                        <!-- Post Tag -->
-                        <div class="gazette-post-tag">
-                            <a href="#">Politices</a>
-                        </div>
-                        <h2 class="font-pt">What's behind the world obsession with gems?</h2>
-                        <p class="gazette-post-date">March 29, 2016</p>
-                        <!-- Post Thumbnail -->
-                        <div class="blog-post-thumbnail my-5">
-                            <img src="img/blog-img/1.jpg" alt="post-thumb">
-                        </div>
-                        <!-- Post Excerpt -->
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultrices egestas nunc, quis venenatis orci tincidunt id. Fusce commodo blandit eleifend. Nullam viverra tincidunt dolor, at pulvinar dui. Nullam at risus ut ipsum viverra posuere. Aliquam quis convallis enim. Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultrices egestas nunc, quis venenatis orci tincidunt id. Fusce commodo blandit eleifend.</p>
-                        <!-- Reading More -->
-                        <div class="post-continue-reading-share d-sm-flex align-items-center justify-content-between mt-30">
-                            <div class="post-continue-btn">
-                                <a href="#" class="font-pt">Continue Reading <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                    @if($featured)
+                        <div class="gazette-welcome-post">
+                            <div class="gazette-post-tag">
+                                @if($featured->category)
+                                {{-- <a href="{{ route('categories.show', $featured->category->slug ?? Str::slug($featured->category->name)) }}"> --}}
+                                <a href="">
+                                    {{ $featured->category->name }}
+                                </a>
+                                @endif
                             </div>
-                            <div class="post-share-btn-group">
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <h2 class="font-pt">{{ $featured->judul }}</h2>
+                            <p class="gazette-post-date">
+                                {{ \Carbon\Carbon::parse($featured->tanggal_posting)->translatedFormat('d M Y') }}
+                                • {{ $featured->nama_penulis }}
+                            </p>
+                            <div class="blog-post-thumbnail my-5">
+                                <img src="{{ $featured->gambar }}" alt="post-thumb">
+                            </div>
+                            <p>{{ Str::limit(strip_tags($featured->deskripsi), 400) }}</p>
+                            <div class="post-continue-reading-share d-sm-flex align-items-center justify-content-between mt-30">
+                                <div class="post-continue-btn">
+                                {{-- <a href="{{ route('articles.show',$featured->slug) }}" class="font-pt"> --}}
+                                <a href="" class="font-pt">
+                                    Continue Reading <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </a>
+                                </div>
+                                <div class="post-share-btn-group">
+                                {{-- <a href="{{ route('articles.show',$featured->slug) }}"><i class="fa fa-link" aria-hidden="true"></i></a> --}}
+                                <a href=""><i class="fa fa-link" aria-hidden="true"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
 
                     <div class="gazette-todays-post section_padding_100_50">
-                        <div class="gazette-heading">
-                            <h4>today’s most popular</h4>
-                        </div>
-                        <!-- Single Today Post -->
-                        <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
-                            <div class="todays-post-thumb">
-                                <img src="img/blog-img/2.jpg" alt="">
-                            </div>
-                            <div class="todays-post-content">
-                                <!-- Post Tag -->
-                                <div class="gazette-post-tag">
-                                    <a href="#">News</a>
+                        <div class="gazette-heading"><h4>today’s most popular</h4></div>
+
+                        @foreach($mostPopular as $pop)
+                            <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
+                                <div class="todays-post-thumb">
+                                    {{-- <a href="{{ route('articles.show',$pop->slug) }}"> --}}
+                                    <a href="">
+                                        <img src="{{ $pop->gambar }}" alt="">
+                                    </a>
                                 </div>
-                                <h3><a href="#" class="font-pt mb-2">$250-million mansion is most expensive</a></h3>
-                                <span class="gazette-post-date mb-2">March 29, 2016</span>
-                                <a href="#" class="post-total-comments">3 Comments</a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultrices egestas nunc, quis venenatis orci tincidunt id. Fusce commodo blandit eleifend. Nullam viverra tincidunt dolor, at pulvinar dui. Nullam at risus ut ipsum viverra posuere.</p>
-                            </div>
-                        </div>
-                        <!-- Single Today Post -->
-                        <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
-                            <div class="todays-post-thumb">
-                                <img src="img/blog-img/3.jpg" alt="">
-                            </div>
-                            <div class="todays-post-content">
-                                <!-- Post Tag -->
-                                <div class="gazette-post-tag">
-                                    <a href="#">Life</a>
+                                <div class="todays-post-content">
+                                    <div class="gazette-post-tag">
+                                        @if($pop->category)
+                                            {{-- <a href="{{ route('categories.show',$pop->category->slug ?? Str::slug($pop->category->name)) }}">{{ $pop->category->name }}</a> --}}
+                                            <a href="">{{ $pop->category->name }}</a>
+                                        @endif
+                                    </div>
+                                    {{-- <h3><a href="{{ route('articles.show',$pop->slug) }}" class="font-pt mb-2">{{ $pop->judul }}</a></h3> --}}
+                                    <h3><a href="" class="font-pt mb-2">{{ $pop->judul }}</a></h3>
+                                    <span class="gazette-post-date mb-2">{{ \Carbon\Carbon::parse($pop->tanggal_posting)->translatedFormat('d M Y') }}</span>
+                                    <p>{{ Str::limit(strip_tags($pop->deskripsi), 180) }}</p>
                                 </div>
-                                <h3><a href="#" class="font-pt mb-2">Homeless man steals $350,000 </a></h3>
-                                <p class="gazette-post-date mb-2">March 29, 2016</p>
-                                <a href="#" class="post-total-comments">3 Comments</a>
-                                <p>Aliquam quis convallis enim. Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc.</p>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -77,66 +122,42 @@
                     <div class="sidebar-area">
                         <!-- Breaking News Widget -->
                         <div class="breaking-news-widget">
-                            <div class="widget-title">
-                                <h5>breaking news</h5>
-                            </div>
-                            <!-- Single Breaking News Widget -->
-                            <div class="single-breaking-news-widget">
-                                <img src="img/blog-img/bn-1.jpg" alt="">
-                                <div class="breakingnews-title">
-                                    <p>breaking news</p>
+                            <div class="widget-title"><h5>breaking news</h5></div>
+                            @foreach($breaking as $b)
+                                <div class="single-breaking-news-widget">
+                                    {{-- <a href="{{ route('articles.show',$b->slug) }}"> --}}
+                                    <a href="">
+                                        <img src="{{ $b->gambar }}" alt="">
+                                    </a>
+                                    <div class="breakingnews-title"><p>{{ $b->category->name ?? 'Breaking' }}</p></div>
+                                    <div class="breaking-news-heading gradient-background-overlay">
+                                        <h5 class="font-pt">
+                                            {{-- <a class="text-white" href="{{ route('articles.show',$b->slug) }}">{{ Str::limit($b->judul, 70) }}</a> --}}
+                                            <a class="text-white" href="">{{ Str::limit($b->judul, 70) }}</a>
+                                        </h5>
+                                    </div>
                                 </div>
-                                <div class="breaking-news-heading gradient-background-overlay">
-                                    <h5 class="font-pt">China leads new global skyscraper record</h5>
-                                </div>
-                            </div>
-                            <!-- Single Breaking News Widget -->
-                            <div class="single-breaking-news-widget">
-                                <img src="img/blog-img/bn-2.jpg" alt="">
-                                <div class="breakingnews-title">
-                                    <p>breaking news</p>
-                                </div>
-                                <div class="breaking-news-heading gradient-background-overlay">
-                                    <h5 class="font-pt">Can a zebra crossing change its stripes?</h5>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
 
                         <!-- Don't Miss Widget -->
                         <div class="donnot-miss-widget">
-                            <div class="widget-title">
-                                <h5>Don't miss</h5>
-                            </div>
-                            <!-- Single Don't Miss Post -->
-                            <div class="single-dont-miss-post d-flex mb-30">
-                                <div class="dont-miss-post-thumb">
-                                    <img src="img/blog-img/dm-1.jpg" alt="">
+                            <div class="widget-title"><h5>Don't miss</h5></div>
+                            @foreach($dontMiss as $dm)
+                                <div class="single-dont-miss-post d-flex mb-30">
+                                    <div class="dont-miss-post-thumb">
+                                        {{-- <a href="{{ route('articles.show',$dm->slug) }}"> --}}
+                                        <a href="">
+                                            <img src="{{ $dm->gambar }}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="dont-miss-post-content">
+                                        {{-- <a href="{{ route('articles.show',$dm->slug) }}" class="font-pt">{{ Str::limit($dm->judul, 60) }}</a> --}}
+                                        <a href="" class="font-pt">{{ Str::limit($dm->judul, 60) }}</a>
+                                        <span>{{ \Carbon\Carbon::parse($dm->tanggal_posting)->translatedFormat('d M Y') }}</span>
+                                    </div>
                                 </div>
-                                <div class="dont-miss-post-content">
-                                    <a href="#" class="font-pt">EU council reunites</a>
-                                    <span>Nov 29, 2017</span>
-                                </div>
-                            </div>
-                            <!-- Single Don't Miss Post -->
-                            <div class="single-dont-miss-post d-flex mb-30">
-                                <div class="dont-miss-post-thumb">
-                                    <img src="img/blog-img/dm-2.jpg" alt="">
-                                </div>
-                                <div class="dont-miss-post-content">
-                                    <a href="#" class="font-pt">A new way to travel the world</a>
-                                    <span>March 29, 2016</span>
-                                </div>
-                            </div>
-                            <!-- Single Don't Miss Post -->
-                            <div class="single-dont-miss-post d-flex mb-30">
-                                <div class="dont-miss-post-thumb">
-                                    <img src="img/blog-img/dm-3.jpg" alt="">
-                                </div>
-                                <div class="dont-miss-post-content">
-                                    <a href="#" class="font-pt">Why choose a bank?</a>
-                                    <span>March 29, 2016</span>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <!-- Advert Widget -->
                         <div class="advert-widget">
@@ -145,18 +166,6 @@
                             </div>
                             <div class="advert-thumb mb-30">
                                 <a href="#"><img src="{{ asset('img/add.png') }}" alt=""></a>
-                            </div>
-                        </div>
-                        <!-- Subscribe Widget -->
-                        <div class="subscribe-widget">
-                            <div class="widget-title">
-                                <h5>subscribe</h5>
-                            </div>
-                            <div class="subscribe-form">
-                                <form action="#">
-                                    <input type="email" name="email" id="subs_email" placeholder="Your Email">
-                                    <button type="submit">subscribe</button>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -169,124 +178,76 @@
         <div class="gazette-catagory-posts-area">
             <div class="container">
                 <div class="row">
+                    @php
+                        $left  = $catsFour->get(0);
+                        $right = $catsFour->get(1);
+                    @endphp
+                    @if($left)
+                        <div class="col-12 col-md-4">
+                            @php $first = $left->articles->first(); @endphp
+                            @if($first)
+                                <div class="gazette-single-catagory-post">
+                                    <div class="single-catagory-post-thumb mb-15">
+                                        <a href=""><img src="{{ $first->gambar }}" alt="{{ $first->sumber_gambar }}"></a>
+                                    </div>
+                                    <div class="gazette-post-tag"><a href="">{{ $left->name }}</a></div>
+                                    <h5><a href="" class="font-pt">{{ Str::limit($first->judul, 70) }}</a></h5>
+                                    <span>{{ \Carbon\Carbon::parse($first->tanggal_posting)->translatedFormat('d M Y') }}</span>
+                                </div>
+                            @endif
+                            @foreach($left->articles->skip(1) as $a)
+                                <div class="gazette-single-catagory-post">
+                                    <h5><a href="" class="font-pt">{{ Str::limit($a->judul, 75) }}</a></h5>
+                                    <span>{{ \Carbon\Carbon::parse($a->tanggal_posting)->translatedFormat('d M Y') }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+
                     <div class="col-12 col-md-4">
-                        <!-- Single Catagory Post -->
-                        <div class="gazette-single-catagory-post">
-                            <div class="single-catagory-post-thumb mb-15">
-                                <img src="img/blog-img/12.jpg" alt="">
+                        @foreach($combinedGroups as $group)
+                            @php
+                                $thumb = $group->articles->first();
+                            @endphp
+                            <div class="gazette-single-catagory-post">
+                                <div class="single-catagory-post-thumb mb-15">
+                                        {{-- <a href="{{ route('articles.show',$firstCombined->article->slug) }}"> --}}
+                                        <a href="">
+                                            <img src="{{ $thumb->gambar }}" alt="{{ $thumb->sumber_gambar }}">
+                                        </a>
+                                    </div>
+                                <div class="gazette-post-tag">
+                                    <a href="">{{ $group->category->name }}</a>
+                                </div>
+                                <h5 class="mb-1">
+                                    <a href="" class="font-pt">{{ Str::limit($a->judul, 30) }}</a>
+                                </h5>
+                                <span>{{ \Carbon\Carbon::parse($a->tanggal_posting)->translatedFormat('d M Y') }}</span>
                             </div>
-                            <!-- Post Tag -->
-                            <div class="gazette-post-tag">
-                                <a href="#">Video</a>
-                            </div>
-                            <h5><a href="#" class="font-pt">Save the eniroment with this step</a></h5>
-                            <span>Nov 29, 2017</span>
-                        </div>
-                        <!-- Single Catagory Post -->
-                        <div class="gazette-single-catagory-post">
-                            <h5><a href="#" class="font-pt">Protest to be anounced in January</a></h5>
-                            <span>Nov 29, 2017</span>
-                        </div>
-                        <!-- Single Catagory Post -->
-                        <div class="gazette-single-catagory-post">
-                            <h5><a href="#" class="font-pt">10 Bills that the Congress in voting</a></h5>
-                            <span>Nov 29, 2017</span>
-                        </div>
-                        <!-- Single Catagory Post -->
-                        <div class="gazette-single-catagory-post">
-                            <h5><a href="#" class="font-pt">The narcissism of Donald Trump</a></h5>
-                            <span>Nov 29, 2017</span>
-                        </div>
+                        @endforeach
                     </div>
-                    <div class="col-12 col-md-4">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <!-- Single Catagory Post -->
+
+                    @if($right)
+                        <div class="col-12 col-md-4">
+                            @php $first = $right->articles->first(); @endphp
+                            @if($first)
                                 <div class="gazette-single-catagory-post">
                                     <div class="single-catagory-post-thumb mb-15">
-                                        <img src="img/blog-img/14.jpg" alt="">
+                                        <a href=""><img src="{{ $first->gambar }}" alt="{{ $first->sumber_gambar }}"></a>
                                     </div>
-                                    <!-- Post Tag -->
-                                    <div class="gazette-post-tag">
-                                        <a href="#">Others</a>
-                                    </div>
-                                    <h5><a href="#" class="font-pt">11 hottest toys for this holiday season</a></h5>
-                                    <span>Nov 29, 2017</span>
+                                    <div class="gazette-post-tag"><a href="">{{ $right->name }}</a></div>
+                                    <h5><a href="" class="font-pt">{{ Str::limit($first->judul, 70) }}</a></h5>
+                                    <span>{{ \Carbon\Carbon::parse($first->tanggal_posting)->translatedFormat('d M Y') }}</span>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <!-- Single Catagory Post -->
+                            @endif
+                            @foreach($right->articles->skip(1) as $a)
                                 <div class="gazette-single-catagory-post">
-                                    <div class="single-catagory-post-thumb mb-15">
-                                        <img src="img/blog-img/15.jpg" alt="">
-                                    </div>
-                                    <!-- Post Tag -->
-                                    <div class="gazette-post-tag">
-                                        <a href="#">Video</a>
-                                    </div>
-                                    <h5><a href="#" class="font-pt">Get this good feeling about life</a></h5>
-                                    <span>Nov 29, 2017</span>
+                                    <h5><a href="" class="font-pt">{{ Str::limit($a->judul, 75) }}</a></h5>
+                                    <span>{{ \Carbon\Carbon::parse($a->tanggal_posting)->translatedFormat('d M Y') }}</span>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <!-- Single Catagory Post -->
-                                <div class="gazette-single-catagory-post">
-                                    <div class="single-catagory-post-thumb mb-15">
-                                        <img src="img/blog-img/16.jpg" alt="">
-                                    </div>
-                                    <!-- Post Tag -->
-                                    <div class="gazette-post-tag">
-                                        <a href="#">Interview</a>
-                                    </div>
-                                    <h5><a href="#" class="font-pt">Get this good feeling about life</a></h5>
-                                    <span>Nov 29, 2017</span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <!-- Single Catagory Post -->
-                                <div class="gazette-single-catagory-post">
-                                    <div class="single-catagory-post-thumb mb-15">
-                                        <img src="img/blog-img/17.jpg" alt="">
-                                    </div>
-                                    <!-- Post Tag -->
-                                    <div class="gazette-post-tag">
-                                        <a href="#">Video</a>
-                                    </div>
-                                    <h5><a href="#" class="font-pt">11 hottest toys for this holiday season</a></h5>
-                                    <span>Nov 29, 2017</span>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <!-- Single Catagory Post -->
-                        <div class="gazette-single-catagory-post">
-                            <div class="single-catagory-post-thumb mb-15">
-                                <img src="img/blog-img/13.jpg" alt="">
-                            </div>
-                            <!-- Post Tag -->
-                            <div class="gazette-post-tag">
-                                <a href="#">Video</a>
-                            </div>
-                            <h5><a href="#" class="font-pt">10 Bills that the Congress in voting</a></h5>
-                            <span>Nov 29, 2017</span>
-                        </div>
-                        <!-- Single Catagory Post -->
-                        <div class="gazette-single-catagory-post">
-                            <h5><a href="#" class="font-pt">Blair can't save Britain from Brexit</a></h5>
-                            <span>Nov 29, 2017</span>
-                        </div>
-                        <!-- Single Catagory Post -->
-                        <div class="gazette-single-catagory-post">
-                            <h5><a href="#" class="font-pt">Save the eniroment with this step</a></h5>
-                            <span>Nov 29, 2017</span>
-                        </div>
-                        <!-- Single Catagory Post -->
-                        <div class="gazette-single-catagory-post">
-                            <h5><a href="#" class="font-pt">Protest to be anounced in January</a></h5>
-                            <span>Nov 29, 2017</span>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -297,86 +258,19 @@
     <section class="gazatte-video-post-area section_padding_100_70 bg-gray">
         <div class="container">
             <div class="row">
-                <!-- Single Video Post Start -->
-                <div class="col-12 col-md-3">
-                    <div class="single-video-post">
-                        <div class="video-post-thumb">
-                            <img src="img/blog-img/4.jpg" alt="">
-                            <a href="https://youtu.be/dIyXl9ZHEgg" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a>
+                @foreach($videos as $v)
+                    <div class="col-12 col-md-3">
+                        <div class="single-video-post">
+                            <div class="video-post-thumb">
+                                <img src="{{ $v->image_url }}" alt="">
+                                {{-- <a href="{{ $v->video }}" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a> --}}
+                                <a href="" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a>
+                            </div>
+                            {{-- <h5><a href="{{ route('articles.show',$v->slug) }}">{{ Str::limit($v->judul, 60) }}</a></h5> --}}
+                            <h5><a href="">{{ Str::limit($v->judul, 60) }}</a></h5>
                         </div>
-                        <h5><a href="#">Show suspended by PBS amid misconduct allegations</a></h5>
                     </div>
-                </div>
-                <!-- Single Video Post Start -->
-                <div class="col-12 col-md-3">
-                    <div class="single-video-post">
-                        <div class="video-post-thumb">
-                            <img src="img/blog-img/5.jpg" alt="">
-                            <a href="https://youtu.be/dIyXl9ZHEgg" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a>
-                        </div>
-                        <h5><a href="#">Parents to Congress</a></h5>
-                    </div>
-                </div>
-                <!-- Single Video Post Start -->
-                <div class="col-12 col-md-3">
-                    <div class="single-video-post">
-                        <div class="video-post-thumb">
-                            <img src="img/blog-img/6.jpg" alt="">
-                            <a href="https://youtu.be/dIyXl9ZHEgg" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a>
-                        </div>
-                        <h5><a href="#">Third Buy Alert for This “Millionaire Maker” Stock</a></h5>
-                    </div>
-                </div>
-                <!-- Single Video Post Start -->
-                <div class="col-12 col-md-3">
-                    <div class="single-video-post">
-                        <div class="video-post-thumb">
-                            <img src="img/blog-img/7.jpg" alt="">
-                            <a href="https://youtu.be/dIyXl9ZHEgg" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a>
-                        </div>
-                        <h5><a href="#">The Chicago Mercantile Exchange is set to begin</a></h5>
-                    </div>
-                </div>
-                <!-- Single Video Post Start -->
-                <div class="col-12 col-md-3">
-                    <div class="single-video-post">
-                        <div class="video-post-thumb">
-                            <img src="img/blog-img/8.jpg" alt="">
-                            <a href="https://youtu.be/dIyXl9ZHEgg" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a>
-                        </div>
-                        <h5><a href="#">Trading bitcoin futures</a></h5>
-                    </div>
-                </div>
-                <!-- Single Video Post Start -->
-                <div class="col-12 col-md-3">
-                    <div class="single-video-post">
-                        <div class="video-post-thumb">
-                            <img src="img/blog-img/9.jpg" alt="">
-                            <a href="https://youtu.be/dIyXl9ZHEgg" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a>
-                        </div>
-                        <h5><a href="#">Are ‘Micro-Mansions’ the Next Big Thing?</a></h5>
-                    </div>
-                </div>
-                <!-- Single Video Post Start -->
-                <div class="col-12 col-md-3">
-                    <div class="single-video-post">
-                        <div class="video-post-thumb">
-                            <img src="img/blog-img/10.jpg" alt="">
-                            <a href="https://youtu.be/dIyXl9ZHEgg" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a>
-                        </div>
-                        <h5><a href="#">McKinney’s target market</a></h5>
-                    </div>
-                </div>
-                <!-- Single Video Post Start -->
-                <div class="col-12 col-md-3">
-                    <div class="single-video-post">
-                        <div class="video-post-thumb">
-                            <img src="img/blog-img/11.jpg" alt="">
-                            <a href="https://youtu.be/dIyXl9ZHEgg" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a>
-                        </div>
-                        <h5><a href="#">Australian Property Prices Remain Flat</a></h5>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -388,94 +282,30 @@
             <div class="row">
                 <div class="col-12">
                     <div class="editorial-post-slides owl-carousel">
-
-                        <!-- Editorial Post Single Slide -->
-                        <div class="editorial-post-single-slide">
-                            <div class="row">
-                                <div class="col-12 col-md-5">
-                                    <div class="editorial-post-thumb">
-                                        <img src="img/blog-img/bitcoin.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-7">
-                                    <div class="editorial-post-content">
-                                        <!-- Post Tag -->
-                                        <div class="gazette-post-tag">
-                                            <a href="#">Editorial</a>
+                        @foreach($breaking->take(6) as $ed)
+                            <div class="editorial-post-single-slide">
+                                <div class="row">
+                                    <div class="col-12 col-md-5">
+                                        <div class="editorial-post-thumb">
+                                            <img src="{{ $ed->gambar }}" alt="">
                                         </div>
-                                        <h2><a href="#" class="font-pt mb-15">Move over, bitcoin. <br>Here comes litecoin</a></h2>
-                                        <p class="editorial-post-date mb-15">March 29, 2016</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultrices egestas nunc, quis venenatis orci tincidunt id. Fusce commodo blandit eleifend. Nullam viverra tincidunt dolor, at pulvinar dui. Nullam at risus ut ipsum viverra posuere. Aliquam quis convallis enim. Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis...</p>
+                                    </div>
+                                    <div class="col-12 col-md-7">
+                                        <div class="editorial-post-content">
+                                            <div class="gazette-post-tag"><a href="#">Editorial</a></div>
+                                            {{-- <h2><a href="{{ route('articles.show',$ed->slug) }}" class="font-pt mb-15"> --}}
+                                            <h2><a href="" class="font-pt mb-15">
+                                                {{ Str::limit($ed->judul, 90) }}
+                                            </a></h2>
+                                            <p class="editorial-post-date mb-15">
+                                                {{ \Carbon\Carbon::parse($ed->tanggal_posting)->translatedFormat('d M Y') }}
+                                            </p>
+                                            <p>{{ Str::limit(strip_tags($ed->deskripsi), 280) }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Editorial Post Single Slide -->
-                        <div class="editorial-post-single-slide">
-                            <div class="row">
-                                <div class="col-12 col-md-5">
-                                    <div class="editorial-post-thumb">
-                                        <img src="img/blog-img/bitcoin.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-7">
-                                    <div class="editorial-post-content">
-                                        <!-- Post Tag -->
-                                        <div class="gazette-post-tag">
-                                            <a href="#">Editorial</a>
-                                        </div>
-                                        <h2><a href="#" class="font-pt mb-15">Move over, bitcoin. <br>Here comes litecoin</a></h2>
-                                        <p class="editorial-post-date mb-15">March 29, 2016</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultrices egestas nunc, quis venenatis orci tincidunt id. Fusce commodo blandit eleifend. Nullam viverra tincidunt dolor, at pulvinar dui. Nullam at risus ut ipsum viverra posuere. Aliquam quis convallis enim. Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis...</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Editorial Post Single Slide -->
-                        <div class="editorial-post-single-slide">
-                            <div class="row">
-                                <div class="col-12 col-md-5">
-                                    <div class="editorial-post-thumb">
-                                        <img src="img/blog-img/bitcoin.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-7">
-                                    <div class="editorial-post-content">
-                                        <!-- Post Tag -->
-                                        <div class="gazette-post-tag">
-                                            <a href="#">Editorial</a>
-                                        </div>
-                                        <h2><a href="#" class="font-pt mb-15">Move over, bitcoin. <br>Here comes litecoin</a></h2>
-                                        <p class="editorial-post-date mb-15">March 29, 2016</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultrices egestas nunc, quis venenatis orci tincidunt id. Fusce commodo blandit eleifend. Nullam viverra tincidunt dolor, at pulvinar dui. Nullam at risus ut ipsum viverra posuere. Aliquam quis convallis enim. Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis...</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Editorial Post Single Slide -->
-                        <div class="editorial-post-single-slide">
-                            <div class="row">
-                                <div class="col-12 col-md-5">
-                                    <div class="editorial-post-thumb">
-                                        <img src="img/blog-img/bitcoin.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-7">
-                                    <div class="editorial-post-content">
-                                        <!-- Post Tag -->
-                                        <div class="gazette-post-tag">
-                                            <a href="#">Editorial</a>
-                                        </div>
-                                        <h2><a href="#" class="font-pt mb-15">Move over, bitcoin. <br>Here comes litecoin</a></h2>
-                                        <p class="editorial-post-date mb-15">March 29, 2016</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultrices egestas nunc, quis venenatis orci tincidunt id. Fusce commodo blandit eleifend. Nullam viverra tincidunt dolor, at pulvinar dui. Nullam at risus ut ipsum viverra posuere. Aliquam quis convallis enim. Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis...</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

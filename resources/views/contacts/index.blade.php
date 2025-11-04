@@ -71,7 +71,7 @@
                                 <p class="help-block text-danger mb-0">{{ $message }}</p>
                             @enderror
                         </div>
-                        <button type="submit" class="btn contact-btn">SUBMIT <i class="fa fa-angle-right ml-2"></i></button>
+                        <button type="submit" class="btn contact-btn">SUBMIT <i class="fas fa-angle-right ml-2"></i></button>
                     </form>
                 </div>
                 <div class="col-12 col-md-4">

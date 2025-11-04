@@ -89,7 +89,7 @@
                                 <div class="post-continue-btn">
                                     {{-- <a href="{{ route('articles.show',$card->slug) }}" class="font-pt"> --}}
                                     <a href="" class="font-pt">
-                                        Continue Reading <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        Continue Reading <i class="fas fa-chevron-right" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                                 <div class="post-continue-btn">
                                     {{-- <a href="{{ route('articles.show',$b->slug) }}" class="font-pt"> --}}
                                     <a href="" class="font-pt">
-                                        Continue Reading <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        Continue Reading <i class="fas fa-chevron-right" aria-hidden="true"></i>
                                     </a>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                                 <div class="post-continue-btn">
                                     {{-- <a href="{{ route('articles.show',$wide->slug) }}" class="font-pt"> --}}
                                     <a href="" class="font-pt">
-                                        Continue Reading <i class="fa fa-chevron-right"></i>
+                                        Continue Reading <i class="fas fa-chevron-right"></i>
                                     </a>
                                 </div>
                             </div>

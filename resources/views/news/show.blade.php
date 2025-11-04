@@ -138,8 +138,8 @@
                                                         <textarea class="form-control" name="message" rows="3" placeholder="Message" required></textarea>
                                                     </div>
                                                     <button type="submit" class="btn leave-comment-btn">
-                                                        SUBMIT <i class="fa fa-angle-right ml-2"></i>
-                                                    </button>                                        
+                                                        SUBMIT <i class="fas fa-angle-right ml-2"></i>
+                                                    </button>
                                                 </form>
                                             </div>
                                         </div>
@@ -196,7 +196,7 @@
                                 @error('message')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <button type="submit" class="btn leave-comment-btn">
-                                SUBMIT <i class="fa fa-angle-right ml-2"></i>
+                                SUBMIT <i class="fas fa-angle-right ml-2"></i>
                             </button>
                         </form>
                     </div>

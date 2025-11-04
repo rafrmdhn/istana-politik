@@ -21,8 +21,8 @@
                             </ul>
                             <!-- Search Form -->
                             <div class="header-search-form mr-auto">
-                                <form action="#">
-                                    <input type="search" placeholder="Input your keyword then press enter..." id="search" name="search">
+                                <form action="{{ route('search') }}" method="GET">
+                                    <input type="search" placeholder="Input your keyword then press enter..." name="q" value="{{ request('q') }}" required>
                                     <input class="d-none" type="submit" value="submit">
                                 </form>
                             </div>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
@@ -62,5 +64,36 @@ class ArticleController extends Controller
         Comment::create($validated);
 
         return back()->with('success', 'Komentar berhasil dikirim!');
+    }
+
+    public function search(Request $request)
+    {
+        $q     = trim($request->query('q', ''));
+        $cat   = $request->query('cat');
+        $sort  = $request->query('sort', 'recent');
+        $days  = (int) $request->query('days', 0);
+        $allowedCategories = ['daerah', 'nasional', 'internasional', 'opini'];
+
+        $categories = Category::select('name','slug')->orderBy('name')->get();
+
+        $articles = Article::with('category')
+            ->when($q !== '', function($query) use ($q) {
+                $query->where(function($qq) use ($q) {
+                    $qq->where('judul', 'like', "%{$q}%");
+                });
+            })
+            ->whereHas('category', fn($c) => $c->whereIn('name', $allowedCategories))
+            ->orderBy('tanggal_posting','desc')
+            ->paginate(12)
+            ->appends($request->query());
+
+        $breaking = Article::with('category')
+            ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
+            ->where('is_featured',1)
+            ->latest('tanggal_posting')
+            ->take(2)
+            ->get();
+
+        return view('news.search', compact('q','cat','days','sort','categories','articles', 'breaking', 'allowedCategories'));
     }
 }

@@ -12,3 +12,4 @@ Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('articl
 Route::post('/comments/store', [ArticleController::class, 'comment'])->name('comments.store');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store')->middleware('throttle:1,1');
+Route::get('/search', [ArticleController::class, 'search'])->name('search');

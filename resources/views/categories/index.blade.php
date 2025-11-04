@@ -41,8 +41,7 @@
                                         </a>
                                     </div>
                                     <h2>
-                                        {{-- <a href="{{ route('articles.show', $ed->slug) }}" class="font-pt mb-15"> --}}
-                                        <a href="" class="font-pt mb-15">
+                                        <a href="{{ route('articles.show', $ed->slug) }}" class="font-pt mb-15">
                                             {{ \Illuminate\Support\Str::limit($ed->judul, 90) }}
                                         </a>
                                     </h2>

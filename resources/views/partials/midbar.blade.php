@@ -4,7 +4,7 @@
             <!-- Logo Area -->
             <div class="col-12 col-md-4">
                 <div class="logo logo-area">
-                    <a href="index.html">
+                    <a href="{{ route('home') }}">
                         <span class="the">ISTANA</span><span class="name">POLITIK</span>
                     </a>
                 </div>

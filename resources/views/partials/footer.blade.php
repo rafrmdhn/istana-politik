@@ -4,11 +4,11 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
                 <h5 class="mb-4 text-uppercase font-weight-bold text-white">Contact Us</h5>
-                <p class="mb-2"><i class="fa fa-map mr-2"></i>
+                <p class="mb-2"><i class="fas fa-map mr-2"></i>
                     Residence One BSD, Jl. Raya Serpong Kilometer 7, Jelupang, Kec. Serpong Utara,<br>
                     Kota Tangerang Selatan, Banten 15310
                 </p>
-                <p class="mb-2"><i class="fa fa-phone mr-2"></i> +62 851 7512 3014 (Jaya)</p>
+                <p class="mb-2"><i class="fas fa-phone mr-2"></i> +62 851 7512 3014 (Jaya)</p>
                 <p class="mb-4"><i class="fa fa-envelope mr-2"></i> partnership@fypmedia.id</p>
 
                 <h6 class="text-uppercase font-weight-bold mb-3 text-white">Ikuti Kami</h6>

@@ -28,7 +28,7 @@
                             </div>
                             <!-- Search btn -->
                             <div id="searchbtn">
-                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <i class="fas fa-search" aria-hidden="true"></i>
                             </div>
                         </div>
                     </nav>

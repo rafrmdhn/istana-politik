@@ -9,7 +9,7 @@
                     Kota Tangerang Selatan, Banten 15310
                 </p>
                 <p class="mb-2"><i class="fas fa-phone mr-2"></i> +62 851 7512 3014 (Jaya)</p>
-                <p class="mb-4"><i class="fa fa-envelope mr-2"></i> partnership@fypmedia.id</p>
+                <p class="mb-4"><i class="fas fa-envelope mr-2"></i> partnership@fypmedia.id</p>
 
                 <h6 class="text-uppercase font-weight-bold mb-3 text-white">Ikuti Kami</h6>
                 <div class="d-flex justify-content-start">

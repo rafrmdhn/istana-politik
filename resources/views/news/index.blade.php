@@ -78,7 +78,7 @@
                                     </a>
                                 </div>
                                 <div class="post-share-btn-group">
-                                    <a href="{{ route('articles.show', $featured->slug) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
+                                    <a href="{{ route('articles.show', $featured->slug) }}"><i class="fas fa-link" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -267,7 +267,7 @@
                             <div class="video-post-thumb">
                                 <img src="{{ $v->image_url }}" alt="">
                                 {{-- <a href="{{ $v->video }}" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a> --}}
-                                <a href="" class="videobtn"><i class="fa fa-play" aria-hidden="true"></i></a>
+                                <a href="" class="videobtn"><i class="fas fa-play" aria-hidden="true"></i></a>
                             </div>
                             {{-- <h5><a href="{{ route('articles.show',$v->slug) }}">{{ Str::limit($v->judul, 60) }}</a></h5> --}}
                             <h5><a href="">{{ Str::limit($v->judul, 60) }}</a></h5>

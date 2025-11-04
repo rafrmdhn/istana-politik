@@ -1,4 +1,4 @@
-<footer class="footer-area bg-img background-overlay pt-5 mt-5" style="background-image: url('{{ asset('img/istana-negara.jpeg') }}');">
+<footer class="footer-area bg-img background-overlay pt-5" style="background-image: url('{{ asset('img/istana-negara.jpeg') }}');">
     <div class="container pb-5">
         <div class="row">
 

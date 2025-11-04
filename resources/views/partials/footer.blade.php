@@ -1,124 +1,73 @@
-<footer class="footer-area bg-img background-overlay" style="background-image: url('{{ asset('img/istana-negara.jpeg') }}');">
-    <!-- Top Footer Area -->
-    <div class="top-footer-area section_padding_100_70">
-        <div class="container">
-            <div class="row">
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                    <div class="single-footer-widget">
-                        <div class="footer-widget-title">
-                            <h4 class="font-pt">Regions</h4>
-                        </div>
-                        <ul class="footer-widget-menu">
-                            <li><a href="#">U.S.</a></li>
-                            <li><a href="#">Africa</a></li>
-                            <li><a href="#">Americas</a></li>
-                            <li><a href="#">Asia</a></li>
-                            <li><a href="#">China</a></li>
-                            <li><a href="#">Europe</a></li>
-                            <li><a href="#">Middle</a></li>
-                            <li><a href="#">East</a></li>
-                            <li><a href="#">Opinion</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                    <div class="single-footer-widget">
-                        <div class="footer-widget-title">
-                            <h4 class="font-pt">Fashion</h4>
-                        </div>
-                        <ul class="footer-widget-menu">
-                            <li><a href="#">Election 2016</a></li>
-                            <li><a href="#">Nation</a></li>
-                            <li><a href="#">World</a></li>
-                            <li><a href="#">Our Team</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                    <div class="single-footer-widget">
-                        <div class="footer-widget-title">
-                            <h4 class="font-pt">Politics</h4>
-                        </div>
-                        <ul class="footer-widget-menu">
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Markets</a></li>
-                            <li><a href="#">Tech</a></li>
-                            <li><a href="#">Luxury</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                    <div class="single-footer-widget">
-                        <div class="footer-widget-title">
-                            <h4 class="font-pt">Featured</h4>
-                        </div>
-                        <ul class="footer-widget-menu">
-                            <li><a href="#">Football</a></li>
-                            <li><a href="#">Golf</a></li>
-                            <li><a href="#">Tennis</a></li>
-                            <li><a href="#">Motorsport</a></li>
-                            <li><a href="#">Horseracing</a></li>
-                            <li><a href="#">Equestrian</a></li>
-                            <li><a href="#">Sailing</a></li>
-                            <li><a href="#">Skiing</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                    <div class="single-footer-widget">
-                        <div class="footer-widget-title">
-                            <h4 class="font-pt">FAQ</h4>
-                        </div>
-                        <ul class="footer-widget-menu">
-                            <li><a href="#">Aviation</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Traveller</a></li>
-                            <li><a href="#">Destinations</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Food/Drink</a></li>
-                            <li><a href="#">Hotels</a></li>
-                            <li><a href="#">Partner Hotels</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-md-4 col-lg-2">
-                    <div class="single-footer-widget">
-                        <div class="footer-widget-title">
-                            <h4 class="font-pt">+More</h4>
-                        </div>
-                        <ul class="footer-widget-menu">
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Architecture</a></li>
-                            <li><a href="#">Arts</a></li>
-                            <li><a href="#">Autos</a></li>
-                            <li><a href="#">Luxury</a></li>
-                        </ul>
-                    </div>
+<footer class="footer-area bg-img background-overlay pt-5 mt-5" style="background-image: url('{{ asset('img/istana-negara.jpeg') }}');">
+    <div class="container pb-5">
+        <div class="row">
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h5 class="mb-4 text-uppercase font-weight-bold text-white">Contact Us</h5>
+                <p class="mb-2"><i class="fa fa-map mr-2"></i>
+                    Residence One BSD, Jl. Raya Serpong Kilometer 7, Jelupang, Kec. Serpong Utara,<br>
+                    Kota Tangerang Selatan, Banten 15310
+                </p>
+                <p class="mb-2"><i class="fa fa-phone mr-2"></i> +62 851 7512 3014 (Jaya)</p>
+                <p class="mb-4"><i class="fa fa-envelope mr-2"></i> partnership@fypmedia.id</p>
+
+                <h6 class="text-uppercase font-weight-bold mb-3 text-white">Ikuti Kami</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-secondary btn-sm rounded-circle mr-2" href="https://www.tiktok.com/@fypmedia.id" target="_blank">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a class="btn btn-secondary btn-sm rounded-circle mr-2" href="https://www.instagram.com/fypmedia.id" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="btn btn-secondary btn-sm rounded-circle mr-2" href="https://www.linkedin.com/company/fypgroup/" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="btn btn-secondary btn-sm rounded-circle" href="https://www.youtube.com/@fypmediaid" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h5 class="mb-4 text-uppercase font-weight-bold text-white">Category</h5>
+                <div class="d-flex flex-wrap">
+                    @foreach($categories ?? [] as $category)
+                        <a href="{{ route('categories.show', $category) }}"
+                           class="text-capitalize btn btn-sm btn-outline-light m-1">
+                           {{ $category }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+
+            {{-- Berita Populer --}}
+            <div class="col-lg-4 col-md-12 mb-4">
+                <h5 class="mb-4 text-uppercase font-weight-bold text-white">Popular</h5>
+                @foreach($popular ?? [] as $item)
+                    <div class="mb-3">
+                        <div class="small mb-1">
+                            <a class="text-danger font-weight-bold" href="{{ route('categories.show', $item->category->slug) }}">
+                                {{ $item->category->name }}
+                            </a>
+                            <span class="text-muted ml-2">
+                                {{ \Carbon\Carbon::parse($item->tanggal_posting)->format('d M Y') }}
+                            </span>
+                        </div>
+                        <a href="{{ route('articles.show', $item->slug) }}" class="text-light">
+                            {{ \Illuminate\Support\Str::limit($item->judul, 60) }}
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+
         </div>
     </div>
 
-    <!-- Bottom Footer Area -->
-    <div class="bottom-footer-area">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center justify-content-center">
-                <div class="col-12">
-                    <div class="copywrite-text">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Develop</i> by <a href="https://fypmedia.id" target="_blank">FYP Media</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container-fluid text-center py-3" style="background: #111;">
+        <p class="m-0">
+            &copy; <script>document.write(new Date().getFullYear());</script>
+            <strong>Istana Politik</strong>. All Rights Reserved.
+            | Develop by <a href="https://fypmedia.id" class="text-danger" target="_blank">FYP Media</a>
+        </p>
     </div>
 </footer>

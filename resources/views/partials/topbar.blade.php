@@ -8,7 +8,7 @@
                     <div id="breakingNewsTicker" class="ticker">
                         <ul>
                             @foreach ($breaking as $item)
-                                <li><a href="#">{{ $item->judul }}</a></li>
+                                <li><a href="{{ route('articles.show', $item->slug) }}">{{ $item->judul }}</a></li>
                             @endforeach
                         </ul>
                     </div>

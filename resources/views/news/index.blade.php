@@ -7,22 +7,21 @@
             <div class="single-blog-post-slide bg-img background-overlay-5"
                 style="background-image:url('{{ $post->gambar }}');">
                 <div class="single-blog-post-content">
-                <div class="tags">
-                    @if($post->category)
-                    <a href="{{ route('categories.show', $post->category->slug) }}">
-                        {{ $post->category->name }}
-                    </a>
-                    @endif
-                </div>
-                <h3>
-                    {{-- <a href="{{ route('articles.show', $post->slug) }}" class="font-pt"> --}}
-                    <a href="">
-                    {{ Str::limit($post->judul, 70) }}
-                    </a>
-                </h3>
-                <div class="date">
-                    <a href="#">{{ \Carbon\Carbon::parse($post->tanggal_posting)->translatedFormat('d M Y') }}</a>
-                </div>
+                    <div class="tags">
+                        @if($post->category)
+                        <a href="{{ route('categories.show', $post->category->slug) }}">
+                            {{ $post->category->name }}
+                        </a>
+                        @endif
+                    </div>
+                    <h3>
+                        <a href="{{ route('articles.show', $post->slug) }}" class="font-pt">
+                        {{ Str::limit($post->judul, 70) }}
+                        </a>
+                    </h3>
+                    <div class="date">
+                        <a href="#">{{ \Carbon\Carbon::parse($post->tanggal_posting)->translatedFormat('d M Y') }}</a>
+                    </div>
                 </div>
             </div>
         @endforeach
@@ -36,10 +35,9 @@
                 <ul class="marquee-content-items">
                     @foreach($marquee as $item)
                     <li>
-                        {{-- <a href="{{ route('articles.show',$item->slug) }}"> --}}
-                        <a href="">
-                        <span class="latest-news-time">{{ $item->created_at->format('H:i') }}</span>
-                        {{ Str::limit($item->judul, 90) }}
+                        <a href="{{ route('articles.show',$item->slug) }}">
+                            <span class="latest-news-time">{{ $item->created_at->format('H:i') }}</span>
+                            {{ Str::limit($item->judul, 90) }}
                         </a>
                     </li>
                     @endforeach
@@ -59,10 +57,9 @@
                         <div class="gazette-welcome-post">
                             <div class="gazette-post-tag">
                                 @if($featured->category)
-                                {{-- <a href="{{ route('categories.show', $featured->category->slug ?? Str::slug($featured->category->name)) }}"> --}}
-                                <a href="">
-                                    {{ $featured->category->name }}
-                                </a>
+                                    <a href="{{ route('categories.show', $featured->category->slug ?? Str::slug($featured->category->name)) }}">
+                                        {{ $featured->category->name }}
+                                    </a>
                                 @endif
                             </div>
                             <h2 class="font-pt">{{ $featured->judul }}</h2>
@@ -71,19 +68,17 @@
                                 • {{ $featured->nama_penulis }}
                             </p>
                             <div class="blog-post-thumbnail my-5">
-                                <img src="{{ $featured->gambar }}" alt="post-thumb">
+                                <img src="{{ $featured->gambar }}" alt="{{ $featured->sumber_gambar }}">
                             </div>
                             <p>{{ Str::limit(strip_tags($featured->deskripsi), 400) }}</p>
                             <div class="post-continue-reading-share d-sm-flex align-items-center justify-content-between mt-30">
                                 <div class="post-continue-btn">
-                                {{-- <a href="{{ route('articles.show',$featured->slug) }}" class="font-pt"> --}}
-                                <a href="" class="font-pt">
-                                    Continue Reading <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                </a>
+                                    <a href="{{ route('articles.show', $featured->slug) }}" class="font-pt">
+                                        Continue Reading <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                    </a>
                                 </div>
                                 <div class="post-share-btn-group">
-                                {{-- <a href="{{ route('articles.show',$featured->slug) }}"><i class="fa fa-link" aria-hidden="true"></i></a> --}}
-                                <a href=""><i class="fa fa-link" aria-hidden="true"></i></a>
+                                    <a href="{{ route('articles.show', $featured->slug) }}"><i class="fa fa-link" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -95,20 +90,17 @@
                         @foreach($mostPopular as $pop)
                             <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
                                 <div class="todays-post-thumb">
-                                    {{-- <a href="{{ route('articles.show',$pop->slug) }}"> --}}
-                                    <a href="">
-                                        <img src="{{ $pop->gambar }}" alt="">
+                                    <a href="{{ route('articles.show', $pop->slug) }}">
+                                        <img src="{{ $pop->gambar }}" alt="{{ $pop->sumber_gambar }}">
                                     </a>
                                 </div>
                                 <div class="todays-post-content">
                                     <div class="gazette-post-tag">
                                         @if($pop->category)
-                                            {{-- <a href="{{ route('categories.show',$pop->category->slug ?? Str::slug($pop->category->name)) }}">{{ $pop->category->name }}</a> --}}
-                                            <a href="">{{ $pop->category->name }}</a>
+                                            <a href="{{ route('categories.show', $pop->category->slug) }}">{{ $pop->category->name }}</a>
                                         @endif
                                     </div>
-                                    {{-- <h3><a href="{{ route('articles.show',$pop->slug) }}" class="font-pt mb-2">{{ $pop->judul }}</a></h3> --}}
-                                    <h3><a href="" class="font-pt mb-2">{{ $pop->judul }}</a></h3>
+                                    <h3><a href="{{ route('articles.show', $pop->slug) }}" class="font-pt mb-2">{{ $pop->judul }}</a></h3>
                                     <span class="gazette-post-date mb-2">{{ \Carbon\Carbon::parse($pop->tanggal_posting)->translatedFormat('d M Y') }}</span>
                                     <p>{{ Str::limit(strip_tags($pop->deskripsi), 180) }}</p>
                                 </div>
@@ -124,15 +116,13 @@
                             <div class="widget-title"><h5>breaking news</h5></div>
                             @foreach($breaking as $b)
                                 <div class="single-breaking-news-widget">
-                                    {{-- <a href="{{ route('articles.show',$b->slug) }}"> --}}
-                                    <a href="">
-                                        <img src="{{ $b->gambar }}" alt="">
+                                    <a href="{{ route('articles.show',$b->slug) }}">
+                                        <img src="{{ $b->gambar }}" alt="{{ $b->sumber_gambar }}">
                                     </a>
                                     <div class="breakingnews-title"><p>{{ $b->category->name ?? 'Breaking' }}</p></div>
                                     <div class="breaking-news-heading gradient-background-overlay">
                                         <h5 class="font-pt">
-                                            {{-- <a class="text-white" href="{{ route('articles.show',$b->slug) }}">{{ Str::limit($b->judul, 70) }}</a> --}}
-                                            <a class="text-white" href="">{{ Str::limit($b->judul, 70) }}</a>
+                                            <a class="text-white" href="{{ route('articles.show', $b->slug) }}">{{ Str::limit($b->judul, 70) }}</a>
                                         </h5>
                                     </div>
                                 </div>
@@ -145,14 +135,12 @@
                             @foreach($dontMiss as $dm)
                                 <div class="single-dont-miss-post d-flex mb-30">
                                     <div class="dont-miss-post-thumb">
-                                        {{-- <a href="{{ route('articles.show',$dm->slug) }}"> --}}
-                                        <a href="">
+                                        <a href="{{ route('articles.show', $dm->slug) }}">
                                             <img src="{{ $dm->gambar }}" alt="">
                                         </a>
                                     </div>
                                     <div class="dont-miss-post-content">
-                                        {{-- <a href="{{ route('articles.show',$dm->slug) }}" class="font-pt">{{ Str::limit($dm->judul, 60) }}</a> --}}
-                                        <a href="" class="font-pt">{{ Str::limit($dm->judul, 60) }}</a>
+                                        <a href="{{ route('articles.show', $dm->slug) }}" class="font-pt">{{ Str::limit($dm->judul, 60) }}</a>
                                         <span>{{ \Carbon\Carbon::parse($dm->tanggal_posting)->translatedFormat('d M Y') }}</span>
                                     </div>
                                 </div>
@@ -187,16 +175,16 @@
                             @if($first)
                                 <div class="gazette-single-catagory-post">
                                     <div class="single-catagory-post-thumb mb-15">
-                                        <a href=""><img src="{{ $first->gambar }}" alt="{{ $first->sumber_gambar }}"></a>
+                                        <a href="{{ route('articles.show', $first->slug) }}"><img src="{{ $first->gambar }}" alt="{{ $first->sumber_gambar }}"></a>
                                     </div>
-                                    <div class="gazette-post-tag"><a href="">{{ $left->name }}</a></div>
-                                    <h5><a href="" class="font-pt">{{ Str::limit($first->judul, 70) }}</a></h5>
+                                    <div class="gazette-post-tag"><a href="{{ route('categories.show', $first->category->slug) }}">{{ $left->name }}</a></div>
+                                    <h5><a href="{{ route('articles.show', $first->slug) }}" class="font-pt">{{ Str::limit($first->judul, 70) }}</a></h5>
                                     <span>{{ \Carbon\Carbon::parse($first->tanggal_posting)->translatedFormat('d M Y') }}</span>
                                 </div>
                             @endif
                             @foreach($left->articles->skip(1) as $a)
                                 <div class="gazette-single-catagory-post">
-                                    <h5><a href="" class="font-pt">{{ Str::limit($a->judul, 75) }}</a></h5>
+                                    <h5><a href="{{ route('articles.show', $a->slug) }}" class="font-pt">{{ Str::limit($a->judul, 75) }}</a></h5>
                                     <span>{{ \Carbon\Carbon::parse($a->tanggal_posting)->translatedFormat('d M Y') }}</span>
                                 </div>
                             @endforeach
@@ -210,16 +198,15 @@
                             @endphp
                             <div class="gazette-single-catagory-post">
                                 <div class="single-catagory-post-thumb mb-15">
-                                        {{-- <a href="{{ route('articles.show',$firstCombined->article->slug) }}"> --}}
-                                        <a href="">
+                                        <a href="{{ route('articles.show', $thumb->slug) }}">
                                             <img src="{{ $thumb->gambar }}" alt="{{ $thumb->sumber_gambar }}">
                                         </a>
                                     </div>
                                 <div class="gazette-post-tag">
-                                    <a href="">{{ $group->category->name }}</a>
+                                    <a href="{{ route('categories.show', $group->category->slug) }}">{{ $group->category->name }}</a>
                                 </div>
                                 <h5 class="mb-1">
-                                    <a href="" class="font-pt">{{ Str::limit($a->judul, 30) }}</a>
+                                    <a href="{{ route('articles.show', $a->slug) }}" class="font-pt">{{ Str::limit($a->judul, 30) }}</a>
                                 </h5>
                                 <span>{{ \Carbon\Carbon::parse($a->tanggal_posting)->translatedFormat('d M Y') }}</span>
                             </div>
@@ -234,14 +221,14 @@
                                     <div class="single-catagory-post-thumb mb-15">
                                         <a href=""><img src="{{ $first->gambar }}" alt="{{ $first->sumber_gambar }}"></a>
                                     </div>
-                                    <div class="gazette-post-tag"><a href="">{{ $right->name }}</a></div>
-                                    <h5><a href="" class="font-pt">{{ Str::limit($first->judul, 70) }}</a></h5>
+                                    <div class="gazette-post-tag"><a href="{{ route('categories.show', $first->category->slug) }}">{{ $right->name }}</a></div>
+                                    <h5><a href="{{ route('articles.show', $first->slug) }}" class="font-pt">{{ Str::limit($first->judul, 70) }}</a></h5>
                                     <span>{{ \Carbon\Carbon::parse($first->tanggal_posting)->translatedFormat('d M Y') }}</span>
                                 </div>
                             @endif
                             @foreach($right->articles->skip(1) as $a)
                                 <div class="gazette-single-catagory-post">
-                                    <h5><a href="" class="font-pt">{{ Str::limit($a->judul, 75) }}</a></h5>
+                                    <h5><a href="{{ route('articles.show', $a->slug) }}" class="font-pt">{{ Str::limit($a->judul, 75) }}</a></h5>
                                     <span>{{ \Carbon\Carbon::parse($a->tanggal_posting)->translatedFormat('d M Y') }}</span>
                                 </div>
                             @endforeach

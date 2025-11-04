@@ -15,8 +15,8 @@
                                         <a class="nav-link" href="{{ route('categories.show', $category) }}">{{ $category }}</a>
                                     </li>
                                 @endforeach
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact Us</a>
+                                <li class="nav-item {{ Request::is('contact') ? 'active' : '' }}">
+                                    <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
                                 </li>
                             </ul>
                             <!-- Search Form -->

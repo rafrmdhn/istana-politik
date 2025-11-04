@@ -192,23 +192,40 @@
                     @endif
 
                     <div class="col-12 col-md-4">
-                        @foreach($combinedGroups as $group)
+                        @foreach ($combinedGroups as $group)
                             @php
-                                $thumb = $group->articles->first();
+                                $thumb = optional($group->articles)->first();
                             @endphp
+
+                            @if (is_null($thumb))
+                                @continue
+                            @endif
+
                             <div class="gazette-single-catagory-post">
                                 <div class="single-catagory-post-thumb mb-15">
-                                        <a href="{{ route('articles.show', $thumb->slug) }}">
-                                            <img src="{{ $thumb->gambar }}" alt="{{ $thumb->sumber_gambar }}">
-                                        </a>
-                                    </div>
-                                <div class="gazette-post-tag">
-                                    <a href="{{ route('categories.show', $group->category->slug) }}">{{ $group->category->name }}</a>
+                                    <a href="{{ route('articles.show', $thumb->slug) }}">
+                                        <img src="{{ $thumb->gambar ?? asset('images/placeholder.jpg') }}"
+                                            alt="{{ $thumb->sumber_gambar ?? $thumb->judul }}">
+                                    </a>
                                 </div>
+
+                                <div class="gazette-post-tag">
+                                    @if (!empty($group->category))
+                                        <a href="{{ route('categories.show', $group->category->slug) }}">
+                                            {{ $group->category->name }}
+                                        </a>
+                                    @endif
+                                </div>
+
                                 <h5 class="mb-1">
-                                    <a href="{{ route('articles.show', $a->slug) }}" class="font-pt">{{ Str::limit($a->judul, 30) }}</a>
+                                    <a href="{{ route('articles.show', $thumb->slug) }}" class="font-pt">
+                                        {{ Str::limit($thumb->judul, 30) }}
+                                    </a>
                                 </h5>
-                                <span>{{ \Carbon\Carbon::parse($a->tanggal_posting)->translatedFormat('d M Y') }}</span>
+
+                                @if (!empty($thumb->tanggal_posting))
+                                    <span>{{ \Carbon\Carbon::parse($thumb->tanggal_posting)->translatedFormat('d M Y') }}</span>
+                                @endif
                             </div>
                         @endforeach
                     </div>

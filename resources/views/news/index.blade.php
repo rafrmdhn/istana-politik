@@ -36,7 +36,7 @@
                     @foreach($marquee as $item)
                     <li>
                         <a href="{{ route('articles.show',$item->slug) }}">
-                            <span class="latest-news-time">{{ $item->created_at->format('H:i') }}</span>
+                            <span class="latest-news-time">{{ $item->created_at->format('M Y') }}</span>
                             {{ Str::limit($item->judul, 90) }}
                         </a>
                     </li>

@@ -16,6 +16,7 @@ class CategoryController extends Controller
         $breaking = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
             ->where('is_featured',1)
+            ->scopeTerbit()
             ->latest('tanggal_posting')
             ->take(2)
             ->get();
@@ -23,17 +24,20 @@ class CategoryController extends Controller
         $editorials = Article::with('category')
             ->where('kategori_id', $category->id)
             ->orderByDesc('is_featured')
+            ->scopeTerbit()
             ->latest('tanggal_posting')
             ->take(6)
             ->get();
 
         $articles = Article::with('category')
             ->where('kategori_id', $category->id)
+            ->scopeTerbit()
             ->latest('tanggal_posting')
             ->paginate(9);
 
         $highlight = Article::with('category')
             ->where('kategori_id', $category->id)
+            ->scopeTerbit()
             ->latest('tanggal_posting')
             ->first();
 

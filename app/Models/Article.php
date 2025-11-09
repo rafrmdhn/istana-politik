@@ -16,4 +16,9 @@ class Article extends Model
     public function comments() {
         return $this->hasMany(Comment::class, 'artikel_id', 'id');
     }
+
+    public function scopeTerbit($q)
+    {
+        return $q->where('tanggal_posting', '<=', now('Asia/Jakarta'));
+    }
 }

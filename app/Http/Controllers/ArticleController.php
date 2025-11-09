@@ -84,6 +84,7 @@ class ArticleController extends Controller
             })
             ->whereHas('category', fn($c) => $c->whereIn('name', $allowedCategories))
             ->orderBy('tanggal_posting','desc')
+            ->terbit()
             ->paginate(12)
             ->appends($request->query());
 

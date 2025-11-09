@@ -15,7 +15,7 @@
         white-space: nowrap;
     }
     .logo a{ text-decoration:none; color:inherit; }
-    .logo .the{ color:#cfcfcf; font-weight:700; margin-right:.15em; }
+    .logo .the{ color:#ff0303; font-weight:700; margin-right:.15em; }
     .logo .name{ font-weight:900; color:#000; }
 
     .header-advert-area{

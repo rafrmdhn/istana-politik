@@ -2,8 +2,7 @@
 
 @section('container')
 <style>
-    /* 1) Pulihkan marker numbering/bullet di dalam artikel */
-  .single-post-text ol,
+    .single-post-text ol,
   .single-post-text ul {
     list-style-position: outside;
     margin-left: 1.25rem;
@@ -12,9 +11,9 @@
   .single-post-text ol { list-style-type: decimal !important; }
   .single-post-text ul { list-style-type: disc !important; }
   .single-post-text li { display: list-item !important; }
-  .single-post-text li p { margin: 0; } /* editor sering membuat <li><p>...</p></li> */
+  .single-post-text li p { margin: 0; } /* editor sering hasilkan <li><p>..</p></li> */
 
-  /* 2) Matikan efek drop-cap/uppercase pada huruf pertama paragraf */
+  /* matikan drop-cap/uppercase di dalam artikel */
   .single-post-text p:first-letter,
   .single-post-text li p:first-letter {
     float: none !important;

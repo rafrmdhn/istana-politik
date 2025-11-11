@@ -2,24 +2,30 @@
 
 @section('container')
 <style>
-    .single-post-text ol,
-    .single-post-text ul {
-        list-style-position: outside;
-        margin-left: 1.25rem;
-        padding-left: 1.25rem;
-    }
-    .single-post-text ol { list-style-type: decimal !important; }
-    .single-post-text ul { list-style-type: disc !important; }
+    /* 1) Pulihkan marker numbering/bullet di dalam artikel */
+  .single-post-text ol,
+  .single-post-text ul {
+    list-style-position: outside;
+    margin-left: 1.25rem;
+    padding-left: 1.25rem;
+  }
+  .single-post-text ol { list-style-type: decimal !important; }
+  .single-post-text ul { list-style-type: disc !important; }
+  .single-post-text li { display: list-item !important; }
+  .single-post-text li p { margin: 0; } /* editor sering membuat <li><p>...</p></li> */
 
-    /* kalau tema kamu sempat menimpa display */
-    .single-post-text li { display: list-item !important; }
-
-    /* kalau tema memaksa uppercase, ini menormalkan */
-    .single-post-text p,
-    .single-post-text li { text-transform: none !important; }
-
-    /* opsional: bikin marker lebih jelas (browser modern) */
-    .single-post-text ol li::marker { font-weight: 600; }
+  /* 2) Matikan efek drop-cap/uppercase pada huruf pertama paragraf */
+  .single-post-text p:first-letter,
+  .single-post-text li p:first-letter {
+    float: none !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    font-weight: inherit !important;
+    text-transform: none !important;
+    color: inherit !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 </style>
 <section class="single-post-area">
     <div class="single-post-title bg-img background-overlay"

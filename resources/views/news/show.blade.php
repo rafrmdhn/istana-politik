@@ -1,31 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-<style>
-    .single-post-text ol,
-  .single-post-text ul {
-    list-style-position: outside;
-    margin-left: 1.25rem;
-    padding-left: 1.25rem;
-  }
-  .single-post-text ol { list-style-type: decimal !important; }
-  .single-post-text ul { list-style-type: disc !important; }
-  .single-post-text li { display: list-item !important; }
-  .single-post-text li p { margin: 0; } /* editor sering hasilkan <li><p>..</p></li> */
-
-  /* matikan drop-cap/uppercase di dalam artikel */
-  .single-post-text p:first-letter,
-  .single-post-text li p:first-letter {
-    float: none !important;
-    font-size: inherit !important;
-    line-height: inherit !important;
-    font-weight: inherit !important;
-    text-transform: none !important;
-    color: inherit !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-</style>
 <section class="single-post-area">
     <div class="single-post-title bg-img background-overlay"
         style="background-image: url('{{ $article->gambar }}');">
@@ -54,6 +29,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8">
+                    @php
+                        $html = preg_replace('/<ol([^>]*?)\sdata-start="(\d+)"([^>]*)>/i', '<ol$1 start="$2"$3>', $article->deskripsi);
+                    @endphp
                     <div class="single-post-text text-justify">
                         {!! $article->deskripsi !!}
                     </div>

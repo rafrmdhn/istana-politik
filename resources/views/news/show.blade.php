@@ -2,22 +2,24 @@
 
 @section('container')
 <style>
-    .single-post-text ul,
-    .single-post-text ol {
+    .single-post-text ol,
+    .single-post-text ul {
         list-style-position: outside;
         margin-left: 1.25rem;
         padding-left: 1.25rem;
     }
-    .single-post-text ul { list-style-type: disc; }
-    .single-post-text ol { list-style-type: decimal; }
+    .single-post-text ol { list-style-type: decimal !important; }
+    .single-post-text ul { list-style-type: disc !important; }
 
+    /* kalau tema kamu sempat menimpa display */
+    .single-post-text li { display: list-item !important; }
+
+    /* kalau tema memaksa uppercase, ini menormalkan */
     .single-post-text p,
-    .single-post-text li {
-        text-transform: none !important;
-    }
+    .single-post-text li { text-transform: none !important; }
 
-    .single-post-text li { margin-bottom: .5rem; }
-    .single-post-text li p { margin: 0; }
+    /* opsional: bikin marker lebih jelas (browser modern) */
+    .single-post-text ol li::marker { font-weight: 600; }
 </style>
 <section class="single-post-area">
     <div class="single-post-title bg-img background-overlay"

@@ -70,8 +70,7 @@
                                 <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
                             </div>
                             <h2 class="font-pt">
-                                {{-- <a href="{{ route('articles.show',$card->slug) }}"> --}}
-                                <a href="">
+                                <a href="{{ route('articles.show', $card->slug) }}">
                                     {{ \Illuminate\Support\Str::limit($card->judul, 70) }}
                                 </a>
                             </h2>
@@ -79,16 +78,14 @@
                                 {{ \Carbon\Carbon::parse($card->tanggal_posting)->translatedFormat('d M Y') }}
                             </p>
                             <div class="blog-post-thumbnail my-5">
-                                {{-- <a href="{{ route('articles.show',$card->slug) }}"> --}}
-                                <a href="">
+                                <a href="{{ route('articles.show', $card->slug) }}">
                                     <img src="{{ $card->gambar }}" alt="{{ $card->sumber_gambar }}">
                                 </a>
                             </div>
                             <p>{{ \Illuminate\Support\Str::limit(strip_tags($card->deskripsi), 140) }}</p>
                             <div class="post-continue-reading-share mt-30">
                                 <div class="post-continue-btn">
-                                    {{-- <a href="{{ route('articles.show',$card->slug) }}" class="font-pt"> --}}
-                                    <a href="" class="font-pt">
+                                    <a href="{{ route('articles.show', $card->slug) }}" class="font-pt">
                                         Continue Reading <i class="fas fa-chevron-right" aria-hidden="true"></i>
                                     </a>
                                 </div>
@@ -105,8 +102,7 @@
                                 <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
                             </div>
                             <h2 class="font-pt">
-                                {{-- <a href="{{ route('articles.show',$b->slug) }}"> --}}
-                                <a href="">
+                                <a href="{{ route('articles.show', $b->slug) }}">
                                     {{ \Illuminate\Support\Str::limit($b->judul, 80) }}
                                 </a>
                             </h2>
@@ -114,16 +110,14 @@
                                 {{ \Carbon\Carbon::parse($b->tanggal_posting)->translatedFormat('d M Y') }}
                             </p>
                             <div class="blog-post-thumbnail my-5">
-                                {{-- <a href="{{ route('articles.show',$b->slug) }}"> --}}
-                                <a href="">
+                                <a href="{{ route('articles.show', $b->slug) }}">
                                     <img src="{{ $b->gambar }}" alt="{{ $b->sumber_gambar }}">
                                 </a>
                             </div>
                             <p>{{ \Illuminate\Support\Str::limit(strip_tags($b->deskripsi), 180) }}</p>
                             <div class="post-continue-reading-share mt-30">
                                 <div class="post-continue-btn">
-                                    {{-- <a href="{{ route('articles.show',$b->slug) }}" class="font-pt"> --}}
-                                    <a href="" class="font-pt">
+                                    <a href="{{ route('articles.show',$b->slug) }}" class="font-pt">
                                         Continue Reading <i class="fas fa-chevron-right" aria-hidden="true"></i>
                                     </a>
                                 </div>
@@ -137,8 +131,7 @@
                 <div class="col-12">
                     <div class="gazette-welcome-post d-md-flex align-items-center">
                         <div class="blog-post-thumbnail">
-                            {{-- <a href="{{ route('articles.show',$wide->slug) }}"> --}}
-                            <a href="">
+                            <a href="{{ route('articles.show',$wide->slug) }}">
                                 <img src="{{ $wide->gambar }}" alt="{{ $wide->sumber_gambar }}">
                             </a>
                         </div>
@@ -147,8 +140,7 @@
                                 <a href="{{ route('categories.show', $category->slug) }}">{{ $category->name }}</a>
                             </div>
                             <h2 class="font-pt">
-                                {{-- <a href="{{ route('articles.show',$wide->slug) }}"> --}}
-                                <a href="">
+                                <a href="{{ route('articles.show',$wide->slug) }}">
                                     {{ \Illuminate\Support\Str::limit($wide->judul, 100) }}
                                 </a>
                             </h2>
@@ -158,8 +150,7 @@
                             <p>{{ \Illuminate\Support\Str::limit(strip_tags($wide->deskripsi), 220) }}</p>
                             <div class="post-continue-reading-share mt-15">
                                 <div class="post-continue-btn">
-                                    {{-- <a href="{{ route('articles.show',$wide->slug) }}" class="font-pt"> --}}
-                                    <a href="" class="font-pt">
+                                    <a href="{{ route('articles.show',$wide->slug) }}" class="font-pt">
                                         Continue Reading <i class="fas fa-chevron-right"></i>
                                     </a>
                                 </div>

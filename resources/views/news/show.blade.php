@@ -4,28 +4,20 @@
 <style>
     .single-post-text ul,
     .single-post-text ol {
-        margin: 0 0 1rem 1.25rem;
+        list-style-position: outside;
+        margin-left: 1.25rem;
         padding-left: 1.25rem;
-        text-transform: none;
     }
+    .single-post-text ul { list-style-type: disc; }
+    .single-post-text ol { list-style-type: decimal; }
 
-    .single-post-text ul {
-        list-style: disc outside;
-    }
-
-    .single-post-text ol {
-        list-style: decimal outside;
-    }
-
+    .single-post-text p,
     .single-post-text li {
-        list-style: inherit;
-        margin: .25rem 0;
+        text-transform: none !important;
     }
 
-    .single-post-text ol[type="a"] { list-style: lower-alpha; }
-    .single-post-text ol[type="A"] { list-style: upper-alpha; }
-    .single-post-text ol[type="i"] { list-style: lower-roman; }
-    .single-post-text ol[type="I"] { list-style: upper-roman; }
+    .single-post-text li { margin-bottom: .5rem; }
+    .single-post-text li p { margin: 0; }
 </style>
 <section class="single-post-area">
     <div class="single-post-title bg-img background-overlay"

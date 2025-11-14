@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -12,6 +13,8 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
+        $sidebarAd = Ads::active()->position('sidebar')->inRandomOrder()->first();
         $allowedCategories = ['daerah', 'nasional', 'internasional', 'opini'];
         $welcomeBlog = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
@@ -88,7 +91,8 @@ class HomeController extends Controller
         return view('news.index', compact(
             'allowedCategories',
             'welcomeBlog','marquee','featured','mostPopular',
-            'breaking','dontMiss', 'catsFour', 'combinedGroups', 'videos'
+            'breaking','dontMiss', 'catsFour', 'combinedGroups', 'videos',
+            'headerAd', 'sidebarAd'
         ));
     }
 }

@@ -147,14 +147,16 @@
                             @endforeach
                         </div>
                         <!-- Advert Widget -->
-                        <div class="advert-widget">
-                            <div class="widget-title">
-                                <h5>Advert</h5>
+                        @if(!empty($sidebarAd))
+                            <div class="advert-widget">
+                                <div class="widget-title">
+                                    <h5>Advert</h5>
+                                </div>
+                                <div class="advert-thumb mb-30">
+                                    <a href="{{ $sidebarAd->link_url }}" target="_blank" rel="noopener"><img src="{{ $sidebarAd->image_path }}" alt="{{ $sidebarAd->title }}"></a>
+                                </div>
                             </div>
-                            <div class="advert-thumb mb-30">
-                                <a href="#"><img src="{{ asset('img/add.png') }}" alt=""></a>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

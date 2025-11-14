@@ -74,11 +74,13 @@
                 </div>
             </div>
             <!-- Header Advert Area -->
-            <div class="col-12 col-md-8">
-                <div class="header-advert-area">
-                    <a href="#"><img src="{{ asset('img/top-advert.png') }}" alt="header-add"></a>
+            @if(!empty($headerAd))
+                <div class="col-12 col-md-8">
+                    <div class="header-advert-area">
+                        <a href="{{ $headerAd->link_url }}" target="_blank" rel="noopener"><img src="{{ $headerAd->image_path }}" alt="{{ $headerAd->title }}"></a>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 </div>

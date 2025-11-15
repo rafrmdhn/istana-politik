@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormSubmitted;
@@ -12,6 +13,7 @@ class ContactController extends Controller
 {
     public function index()
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
         $allowedCategories = ['daerah', 'nasional', 'internasional', 'opini'];
         $breaking = Article::with('category')
             ->whereHas('category', fn($q) => $q->whereIn('name', $allowedCategories))
@@ -21,7 +23,8 @@ class ContactController extends Controller
             ->get();
         return view('contacts.index', compact(
             'allowedCategories',
-            'breaking'
+            'breaking',
+            'headerAd'
         ));
     }
 

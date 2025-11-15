@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Category;
@@ -13,6 +14,7 @@ class ArticleController extends Controller
 {
     public function show(string $slug)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
         $allowedCategories = ['daerah', 'nasional', 'internasional', 'opini'];
         $article = Article::with(['category'])
             ->where('slug', $slug)
@@ -44,7 +46,7 @@ class ArticleController extends Controller
             ->take(2)
             ->get();
 
-        return view('news.show', compact('article', 'prev', 'next', 'related', 'breaking', 'allowedCategories'));
+        return view('news.show', compact('article', 'prev', 'next', 'related', 'breaking', 'allowedCategories', 'headerAd'));
     }
 
     public function comment(Request $request)
@@ -68,6 +70,7 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
         $q     = trim($request->query('q', ''));
         $cat   = $request->query('cat');
         $sort  = $request->query('sort', 'recent');
@@ -95,6 +98,6 @@ class ArticleController extends Controller
             ->take(2)
             ->get();
 
-        return view('news.search', compact('q','cat','days','sort','categories','articles', 'breaking', 'allowedCategories'));
+        return view('news.search', compact('q','cat','days','sort','categories','articles', 'breaking', 'allowedCategories', 'headerAd'));
     }
 }

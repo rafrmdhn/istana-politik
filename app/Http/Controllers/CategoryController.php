@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ class CategoryController extends Controller
 {
     public function show(string $slug)
     {
+        $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
         $allowedCategories = ['daerah', 'nasional', 'internasional', 'opini'];
         $category = Category::where('slug', $slug)->firstOrFail();
 
@@ -47,7 +49,8 @@ class CategoryController extends Controller
             'editorials',
             'articles',
             'highlight',
-            'breaking'
+            'breaking',
+            'headerAd'
         ));
     }
 }

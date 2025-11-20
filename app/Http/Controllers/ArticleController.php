@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ads;
+use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Category;
@@ -16,7 +17,7 @@ class ArticleController extends Controller
     {
         $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
         $allowedCategories = ['daerah', 'nasional', 'internasional', 'opini'];
-        $article = Article::with(['category'])
+        $article = Article::with(['category', 'tags'])
             ->where('slug', $slug)
             ->firstOrFail();
 
@@ -46,7 +47,18 @@ class ArticleController extends Controller
             ->take(2)
             ->get();
 
-        return view('news.show', compact('article', 'prev', 'next', 'related', 'breaking', 'allowedCategories', 'headerAd'));
+        $tags = Tag::take(10)->get();
+
+        return view('news.show', compact(
+            'article',
+            'prev', 
+            'next', 
+            'related', 
+            'breaking', 
+            'allowedCategories', 
+            'headerAd',
+            'tags'
+        ));
     }
 
     public function comment(Request $request)
@@ -97,7 +109,20 @@ class ArticleController extends Controller
             ->latest('tanggal_posting')
             ->take(2)
             ->get();
+        
+        $tags = Tag::take(10)->get();
 
-        return view('news.search', compact('q','cat','days','sort','categories','articles', 'breaking', 'allowedCategories', 'headerAd'));
+        return view('news.search', compact(
+            'q',
+            'cat',
+            'days',
+            'sort',
+            'categories',
+            'articles',
+            'breaking', 
+            'allowedCategories', 
+            'headerAd',
+            'tags'
+        ));
     }
 }

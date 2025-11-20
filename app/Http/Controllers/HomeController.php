@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ads;
+use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -88,11 +89,13 @@ class HomeController extends Controller
             ->latest('tanggal_posting')
             ->take(8)->get();
 
+        $tags = Tag::take(10)->get();
+
         return view('news.index', compact(
             'allowedCategories',
             'welcomeBlog','marquee','featured','mostPopular',
             'breaking','dontMiss', 'catsFour', 'combinedGroups', 'videos',
-            'headerAd', 'sidebarAd'
+            'headerAd', 'sidebarAd', 'tags'
         ));
     }
 }

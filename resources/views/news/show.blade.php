@@ -72,6 +72,17 @@
                         alt="{{ $article->sumber_gambar }}"
                         class="img-fluid mx-auto d-block">
                 </div>
+                @if($article->tags)
+                    <div class="col-12 col-md-8 mt-3">
+                        <span class="text-muted mr-2">Tags:</span>
+                        @foreach($article->tags as $tag)
+                            <a href="{{ route('tags.show', $tag->slug) }}"
+                            class="badge badge-secondary text-uppercase font-weight-semi-bold px-2 py-1 mr-1">
+                                {{ $tag->name }}
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
                 <div class="col-12 col-md-8 mt-4">
                     <div class="d-flex justify-content-between">
                         <div>

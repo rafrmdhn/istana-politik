@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ads;
+use App\Models\Tag;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormSubmitted;
@@ -21,10 +22,13 @@ class ContactController extends Controller
             ->latest('tanggal_posting')
             ->take(2)
             ->get();
+        $tags = Tag::take(10)->get();
+
         return view('contacts.index', compact(
             'allowedCategories',
             'breaking',
-            'headerAd'
+            'headerAd',
+            'tags'
         ));
     }
 

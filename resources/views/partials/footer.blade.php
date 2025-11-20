@@ -38,6 +38,15 @@
                         </a>
                     @endforeach
                 </div>
+                <h5 class="mt-4 mb-4 text-uppercase font-weight-bold text-white">Tags</h5>
+                <div class="d-flex flex-wrap">
+                    @foreach($tags ?? [] as $tag)
+                        <a href="{{ route('tags.show', $tag->slug) }}"
+                        class="text-capitalize btn btn-sm btn-outline-light m-1">
+                            {{ $tag->name }}
+                        </a>
+                    @endforeach
+                </div>
             </div>
 
             {{-- Berita Populer --}}

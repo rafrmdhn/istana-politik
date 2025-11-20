@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
@@ -13,3 +14,4 @@ Route::post('/comments/store', [ArticleController::class, 'comment'])->name('com
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store')->middleware('throttle:1,1');
 Route::get('/search', [ArticleController::class, 'search'])->name('search');
+Route::get('/tags/{tag:slug}', [TagController::class, 'show'])->name('tags.show');

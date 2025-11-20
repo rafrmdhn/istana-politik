@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ads;
+use App\Models\Tag;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -43,6 +44,8 @@ class CategoryController extends Controller
             ->latest('tanggal_posting')
             ->first();
 
+        $tags = Tag::take(10)->get();
+
         return view('categories.index', compact(
             'allowedCategories',
             'category',
@@ -50,7 +53,8 @@ class CategoryController extends Controller
             'articles',
             'highlight',
             'breaking',
-            'headerAd'
+            'headerAd',
+            'tags'
         ));
     }
 }

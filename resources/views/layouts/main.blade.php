@@ -25,6 +25,15 @@
     <!-- Responsive CSS -->
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z116C021SE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Z116C021SE');
+    </script>
 </head>
 
 <body>
@@ -51,15 +60,7 @@
     <!-- Active js -->
     <script src="{{ asset('js/active.js') }}"></script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z116C021SE"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
-        gtag('config', 'G-Z116C021SE');
-    </script>
 </body>
 
 </html>

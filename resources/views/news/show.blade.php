@@ -42,6 +42,14 @@
                             @endif
                         </div>
                         <h2 class="font-pt">{{ $article->judul }}</h2>
+                        <p class="mb-1">
+                            <span class="text-white-50">Penulis:</span> {{ $article->nama_penulis }}
+                            @if($article->additional_authors->isNotEmpty())
+                                <span class="mx-2">•</span>
+                                <span class="text-white-50">Editor:</span>
+                                {{ $article->additional_authors->pluck('name')->join(', ') }}
+                            @endif
+                        </p>
                         <p>
                             {{ \Carbon\Carbon::parse($article->tanggal_posting)->translatedFormat('d M Y') }}
                         </p>

@@ -17,7 +17,7 @@ class ArticleController extends Controller
     {
         $headerAd  = Ads::active()->position('header')->inRandomOrder()->first();
         $allowedCategories = ['daerah', 'nasional', 'internasional', 'opini'];
-        $article = Article::with(['category', 'tags'])
+        $article = Article::with(['category', 'tags', 'additional_authors'])
             ->where('slug', $slug)
             ->firstOrFail();
 
@@ -51,11 +51,11 @@ class ArticleController extends Controller
 
         return view('news.show', compact(
             'article',
-            'prev', 
-            'next', 
-            'related', 
-            'breaking', 
-            'allowedCategories', 
+            'prev',
+            'next',
+            'related',
+            'breaking',
+            'allowedCategories',
             'headerAd',
             'tags'
         ));
@@ -109,7 +109,7 @@ class ArticleController extends Controller
             ->latest('tanggal_posting')
             ->take(2)
             ->get();
-        
+
         $tags = Tag::take(10)->get();
 
         return view('news.search', compact(
@@ -119,8 +119,8 @@ class ArticleController extends Controller
             'sort',
             'categories',
             'articles',
-            'breaking', 
-            'allowedCategories', 
+            'breaking',
+            'allowedCategories',
             'headerAd',
             'tags'
         ));

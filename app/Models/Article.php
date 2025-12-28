@@ -21,6 +21,10 @@ class Article extends Model
         return $this->belongsToMany(Tag::class, 'artikel_tags', 'artikel_id', 'tag_id');
     }
 
+    public function additional_authors() {
+        return $this->belongsToMany(AdditionalAuthor::class, 'artikel_additional_author', 'artikel_id', 'additional_author_id');
+    }
+
     public function scopeTerbit($q)
     {
         return $q->where('tanggal_posting', '<=', now('Asia/Jakarta'));

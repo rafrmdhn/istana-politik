@@ -12,7 +12,13 @@
     <title>Istana Politik</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link type="image/png" href="https://fypmedia.id/assets/backoffice/media/logos/FYPLOGO.png" rel="icon">
+
+    <meta property="og:image" content="https://istanapolitik.fypmedia.id/img/logo.png">
+    <meta property="og:description" content="Merangkum berita seputar dinamika politik, mulai dari kebijakan daerah, isu internasional, hingga opini.">
+    <meta property="og:title" content="Istana Politik">
+    <meta property="og:url" content="https://istanapolitik.fypmedia.id/">
+    <meta property="og:type" content="website">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
